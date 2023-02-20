@@ -6,6 +6,7 @@ import com.hooli.todo.models.Note;
 import com.hooli.todo.repositories.CategoryRepository;
 import com.hooli.todo.repositories.NoteRepository;
 import com.hooli.todo.repositories.UserRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ public class NoteService {
     }
 
     public List<Note> getAllNotes() {
-        return noteRepository.findAll();
+        return noteRepository.findAll(Sort.by(Sort.Direction.DESC, "dateCreated"));
     }
 
     public Note saveNote(NoteDTO noteDTO) {
